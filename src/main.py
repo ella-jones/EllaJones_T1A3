@@ -2,6 +2,18 @@ from chore_functions import add_chore, remove_chore, mark_chore, view_chores, vi
 
 print("Welcome to your Chores list!")
 
+file_name = "chore_list.csv"
+
+try:
+    todo_file = open(file_name, "r")
+    todo_file.close()
+    print("In try block")
+except FileNotFoundError as e:
+    todo_file = open(file_name, "w")
+    todo_file.write("title, completed")
+    todo_file.close()
+    print("In except block")
+
 def menu_bar():
     print("1. Enter 1 to add a chore to your list")
     print("2. Enter 2 to remove a chore from your list")
