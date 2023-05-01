@@ -38,3 +38,8 @@ This will allows the user to view all chores that have not been marked as comple
 
 ### Exit
 This will allow the user to exit from the application.
+
+## Implementation Plan
+I have used a Trello board to manage my implementation plan. See screenshots below.
+
+## Help Documentation
