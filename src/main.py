@@ -40,9 +40,9 @@ while user_selection != "7":
        print("View Chores")
        view_chores(file_name)
     elif (user_selection == "5"):
-       view_day()
+       view_day(file_name)
     elif (user_selection == "6"):
-        view_uncompleted()
+        view_uncompleted(file_name)
     elif (user_selection == "7"):
         break
     else:
