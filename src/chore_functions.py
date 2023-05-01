@@ -1,7 +1,11 @@
+from rich.console import Console
+
 import csv
 
+console = Console()
+
 def add_chore(file_name):
-    print("Add chore")
+    console.print("Add chore", style="bold")
     chore_title = input("Enter your chore title (use simple titles): ").lower()
     chore_day = input("Enter the day this chore needs to be completed: ").lower()
     chore_instructions = input("Enter instructions for this chore, e.g. put clothes in the washing machine: ").lower()
@@ -11,8 +15,8 @@ def add_chore(file_name):
         writer.writerow([chore_title, chore_day, chore_instructions,chore_time , "Uncompleted"])
 
 def remove_chore(file_name):
-    print("Remove chore")
-    print("CURRENT CHORES")
+    console.print("Remove chore", style="bold")
+    print("CURRENT CHORES:")
     view_chores(file_name)
     chore_title = input("Enter the chore title that you want to remove (write it exactly as it is shown): ").lower()
     chore_lists = []
@@ -28,7 +32,7 @@ def remove_chore(file_name):
     view_chores(file_name)
 
 def mark_chore(file_name):
-    print("Mark chore")
+    console.print("Mark chore", style="bold")
     view_chores(file_name)
     chore_title = input("Enter the chore title that you want to mark as complete (Write it exactly as shown): ").lower()
     chore_day = input("Enter the day you completed this chore: ").lower()
@@ -57,7 +61,7 @@ def view_chores(file_name):
                 print(f"Chore: '{row[0]}' is UNCOMPLETED. Day to complete: {row[1]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
 
 def view_day(file_name):
-    print("View chores for a specific day")
+    console.print("View chores for a specific day", style="bold")
     chore_day = input("Enter the day you would like to view: ").lower()
     if (chore_day == "monday"):
         print("Monday's Chores:")
@@ -84,7 +88,7 @@ def view_day(file_name):
                 print(f"Chore: '{row[0]}'. {row[4]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
     
 def view_uncompleted(file_name):
-    print("UNCOMPLETED CHORES:")
+    console.print("UNCOMPLETED CHORES:", style="bold")
     with open(file_name, "r") as chore_file:
         reader = csv.reader(chore_file)
         reader.__next__()

@@ -1,27 +1,29 @@
+from rich.console import Console
+from colored import fg, bg, attr
+
 from chore_functions import add_chore, remove_chore, mark_chore, view_chores, view_day, view_uncompleted
 
-print("Welcome to your Chores list!")
+console = Console()
+console.print("Welcome to your Chores list!", style="bold")
 
 file_name = "chore_list.csv"
 
 try:
     todo_file = open(file_name, "r")
     todo_file.close()
-    print("In try block")
 except FileNotFoundError as e:
     todo_file = open(file_name, "w")
     todo_file.write("title, day to complete, instructions/notes, approx. time, completed/uncompleted\n")
     todo_file.close()
-    print("In except block")
 
 def menu_bar():
-    print("1. Enter 1 to add a chore to your list")
-    print("2. Enter 2 to remove a chore from your list")
-    print("3. Enter 3 to mark a chore as completed")
-    print("4. Enter 4 to view your chores list")
-    print("5. Enter 5 to view your chores for a specific day.")
-    print("6. Enter 6 to view your uncompleted chores")
-    print("7. Enter 7 to exit")
+    console.print("1. Enter [bold]1[/] to [bold]add a chore[/] to your list")
+    console.print("2. Enter [bold]2[/] to [bold]remove a chore[/] from your list")
+    console.print("3. Enter [bold]3[/] to [bold]mark[/] a chore as [bold]completed[/]")
+    console.print("4. Enter [bold]4[/] to [bold]view[/] your chores list")
+    console.print("5. Enter [bold]5[/] to [bold]view[/] your chores for a [bold]specific day[/].")
+    console.print("6. Enter [bold]6[/] to [bold]view[/] your [bold]uncompleted chores[/]")
+    console.print("7. Enter [bold]7[/] to [bold]exit[/]")
     selection = input("Enter your selection: ")
     return selection
 
@@ -37,7 +39,7 @@ while user_selection != "7":
     elif (user_selection == "3"):
         mark_chore(file_name)
     elif (user_selection == "4"):
-       print("View Chores")
+       console.print("View Chores", style="bold")
        view_chores(file_name)
     elif (user_selection == "5"):
        view_day(file_name)
