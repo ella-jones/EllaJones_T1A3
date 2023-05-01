@@ -1,24 +1,26 @@
 from rich.console import Console
 
+from colored import fg, bg, attr
+
 import csv
 
 console = Console()
 
 def add_chore(file_name):
-    console.print("Add chore", style="bold")
-    chore_title = input("Enter your chore title (use simple titles): ").lower()
-    chore_day = input("Enter the day this chore needs to be completed: ").lower()
-    chore_instructions = input("Enter instructions for this chore, e.g. put clothes in the washing machine: ").lower()
-    chore_time = input("Enter the approx. time it will take to complete this chore: ").lower()
+    console.print("Add Chore", style="bold underline deep_pink1")
+    chore_title = input(f"Enter your {attr('bold')}{fg('dark_slate_gray_1')}chore title{attr('reset')} (use simple titles): ").lower().strip()
+    chore_day = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}day{attr('reset')} this chore needs to be completed: ").lower().strip()
+    chore_instructions = input(f"Enter {attr('bold')}{fg('dark_slate_gray_1')}instructions{attr('reset')} for this chore, e.g. put clothes in the washing machine: ").lower()
+    chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}approx. time{attr('reset')} it will take to complete this chore: ").lower()
     with open(file_name, "a") as chore_file:
         writer = csv.writer(chore_file)
         writer.writerow([chore_title, chore_day, chore_instructions,chore_time , "Uncompleted"])
 
 def remove_chore(file_name):
-    console.print("Remove chore", style="bold")
-    print("CURRENT CHORES:")
+    console.print("Remove Chore", style="bold underline dark_orange")
+    console.print("CURRENT LIST OF CHORES:", style="bold yellow")
     view_chores(file_name)
-    chore_title = input("Enter the chore title that you want to remove (write it exactly as it is shown): ").lower()
+    chore_title = input(f"Enter the {attr('bold')}{fg('purple_3')}'chore title'{attr('reset')} that you want to remove: ").lower().strip()
     chore_lists = []
     with open(file_name, "r") as chore_file:
         reader = csv.reader(chore_file)
@@ -28,16 +30,16 @@ def remove_chore(file_name):
     with open(file_name, "w") as chore_file:
         writer = csv.writer(chore_file)
         writer.writerows(chore_lists)
-    print("EDITED LIST:")
+    console.print("EDITED LIST:", style="bold yellow")
     view_chores(file_name)
 
 def mark_chore(file_name):
-    console.print("Mark chore", style="bold")
+    console.print("Mark Chore", style="bold underline yellow")
     view_chores(file_name)
-    chore_title = input("Enter the chore title that you want to mark as complete (Write it exactly as shown): ").lower()
-    chore_day = input("Enter the day you completed this chore: ").lower()
-    chore_instructions = input("Enter any notes for this chore (if you would like to leave as blank, enter 'none'): ").lower()
-    chore_time = input("Enter the time it took you to complete this chore: ").lower()
+    chore_title = input(f"Enter the {attr('bold')}{fg('purple_3')}'chore title'{attr('reset')} that you want to mark as complete: ").lower().strip()
+    chore_day = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}day{attr('reset')} you completed this chore: ").lower().strip()
+    chore_instructions = input(f"Enter any {attr('bold')}{fg('dark_slate_gray_1')}notes{attr('reset')} for this chore (if you would like to leave as blank, enter 'none'): ").lower()
+    chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}time{attr('reset')} it took you to complete this chore: ").lower()
     chore_lists = []
     with open(file_name, "r") as chore_file:
         reader = csv.reader(chore_file)
@@ -56,42 +58,42 @@ def view_chores(file_name):
         reader.__next__()
         for row in reader:
             if(row[4] == "Completed"):
-                print(f"Chore: '{row[0]}' was COMPLETED on {row[1]} in {row[3]}. Notes: {row[2]}.")
+                print(f"Chore: {attr('bold')}{fg('purple_3')}'{row[0]}'{attr('reset')} was {attr('bold')}{fg('pale_green_1a')}COMPLETED{attr('reset')} on {row[1]} in {row[3]}. Notes: {row[2]}.")
             else:
-                print(f"Chore: '{row[0]}' is UNCOMPLETED. Day to complete: {row[1]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
+                print(f"Chore: {attr('bold')}{fg('purple_3')}'{row[0]}'{attr('reset')} is {attr('bold')}{fg('indian_red_1a')}UNCOMPLETED{attr('reset')}. Day to complete: {row[1]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
 
 def view_day(file_name):
-    console.print("View chores for a specific day", style="bold")
-    chore_day = input("Enter the day you would like to view: ").lower()
+    console.print("View chores for a specific day", style="bold underline bright_cyan")
+    chore_day = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}day{attr('reset')} you would like to view: ").lower().strip()
     if (chore_day == "monday"):
-        print("Monday's Chores:")
+        console.print("Monday's Chores:", style="bold plum1")
     elif (chore_day == "tuesday"):
-        print("Tuesday's Chores:")
+        console.print("Tuesday's Chores:", style="bold plum1")
     elif (chore_day == "wednesday"):
-        print("Wednesday's Chores:")
+        console.print("Wednesday's Chores:", style="bold plum1")
     elif (chore_day == "thursday"):
-        print("Thursday's Chores:")
+        console.print("Thursday's Chores:", style="bold plum1")
     elif (chore_day == "friday"):
-        print("Friday's Chores:")
+        console.print("Friday's Chores:", style="bold plum1")
     elif (chore_day == "saturday"):
-        print("Saturday's Chores:")
+        console.print("Saturday's Chores:", style="bold plum1")
     elif (chore_day == "sunday"):
-        print("Sunday's Chores:")
+        console.print("Sunday's Chores:", style="bold plum1")
     else:
-        print("Invalid Input")
+        console.print("Invalid Input", style="red")
 
     with open(file_name, "r") as chore_file:
         reader = csv.reader(chore_file)
         reader.__next__()
         for row in reader:
             if(row[1] == chore_day):
-                print(f"Chore: '{row[0]}'. {row[4]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
+                print(f"Chore: {attr('bold')}{fg('purple_3')}'{row[0]}'{attr('reset')}. {attr('bold')}{fg('sandy_brown')}{row[4]}{attr('reset')}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
     
 def view_uncompleted(file_name):
-    console.print("UNCOMPLETED CHORES:", style="bold")
+    console.print("UNCOMPLETED CHORES:", style="bold underline slate_blue1")
     with open(file_name, "r") as chore_file:
         reader = csv.reader(chore_file)
         reader.__next__()
         for row in reader:
             if(row[4] == "Uncompleted"):
-                print(f"Chore: '{row[0]}'. Day to complete: {row[1]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
+                print(f"Chore: {attr('bold')}{fg('yellow')}'{row[0]}'{attr('reset')}. Day to complete: {row[1]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")

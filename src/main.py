@@ -18,13 +18,13 @@ except FileNotFoundError as e:
     todo_file.close()
 
 def menu_bar():
-    console.print("1. Enter [bold]1[/] to [bold]add a chore[/] to your list")
-    console.print("2. Enter [bold]2[/] to [bold]remove a chore[/] from your list")
-    console.print("3. Enter [bold]3[/] to [bold]mark[/] a chore as [bold]completed[/]")
-    console.print("4. Enter [bold]4[/] to [bold]view[/] your chores list")
-    console.print("5. Enter [bold]5[/] to [bold]view[/] your chores for a [bold]specific day[/].")
-    console.print("6. Enter [bold]6[/] to [bold]view[/] your [bold]uncompleted chores[/]")
-    console.print("7. Enter [bold]7[/] to [bold]exit[/]")
+    console.print("1. Enter [bold deep_pink1]1[/] to [bold deep_pink1]add a chore[/] to your list")
+    console.print("2. Enter [bold dark_orange]2[/] to [bold dark_orange]remove a chore[/] from your list")
+    console.print("3. Enter [bold yellow]3[/] to [bold yellow]mark[/] a chore as [bold]completed[/]")
+    console.print("4. Enter [bold green1]4[/] to [bold green1]view[/] your chores list")
+    console.print("5. Enter [bold bright_cyan]5[/] to [bold bright_cyan]view[/] your chores for a [bold]specific day[/].")
+    console.print("6. Enter [bold slate_blue1]6[/] to [bold slate_blue1]view[/] your [bold]uncompleted chores[/]")
+    console.print("7. Enter [bold dark_magenta]7[/] to [bold dark_magenta]exit[/]")
     selection = input("Enter your selection: ")
     return selection
 
@@ -40,7 +40,7 @@ while user_selection != "7":
     elif (user_selection == "3"):
         mark_chore(file_name)
     elif (user_selection == "4"):
-       console.print("View Chores", style="bold")
+       console.print("View Chores", style="bold underline green1")
        view_chores(file_name)
     elif (user_selection == "5"):
        view_day(file_name)
@@ -51,7 +51,7 @@ while user_selection != "7":
     else:
        print("Invalid Input") 
 
-    input("Press Enter to contunue...")
+    input(f"Press {attr('bold')}{fg('wheat_1')}Enter{attr('reset')} to contunue...")
 
 
 print("Thank you for using Chore List!")
