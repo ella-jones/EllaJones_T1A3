@@ -1,3 +1,5 @@
+from chore_functions import add_chore, remove_chore, mark_chore, view_chores, view_day, view_uncompleted
+
 print("Welcome to your Chores list!")
 
 def menu_bar():
