@@ -11,5 +11,29 @@ def menu_bar():
     selection = input("Enter your selection: ")
     return selection
 
-user_selection = ""
+user_selection = str()
 
+while user_selection != "7":
+    user_selection = menu_bar()
+
+    if (user_selection == "1"):
+        print("Add chore")
+    elif (user_selection == "2"):
+        print("Remove chore")
+    elif (user_selection == "3"):
+        print("Mark chore")
+    elif (user_selection == "4"):
+        print("View Chores")
+    elif (user_selection == "5"):
+        print("View Day")
+    elif (user_selection == "6"):
+        print("View Uncompleted Chores")
+    elif (user_selection == "7"):
+        break
+    else:
+       print("Invalid Input") 
+
+    input("Press Enter to contunue...")
+
+
+print("Thank you for using Chore List!")
