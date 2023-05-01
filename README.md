@@ -41,12 +41,11 @@ This will allow the user to exit from the application.
 
 ## Implementation Plan
 
-I have used a Trello board to manage my implementation plan. I have created each feature as a seperate card in the to do section. I have also included other tasks that needed to be completed in the todo section, such as "Add Pytest package". See screenshots below:
-![Trello Board Overview - Part 1](./docs/screenshot1.png)
-![Trello Board Overview - Part 2](./docs/screenshot2.png)
+I have used a Trello board to manage my implementation plan. I have created each feature as a seperate card in the to do section. See screenshot below:
+![Trello Board Overview](./docs/screenshot5.png)
 
 In each of the cards, I have included a user story for each feature, as well as a checklist for tasks to complete within each feature and a due date for the completion of that feature. See screenshot example below. To view each individual card, please visit the Trello board link (below).
-![Trello Board - Individual Card](./docs/screenshot3.png)
+![Trello Board - Individual Card](./docs/screenshot4.png)
 
 When I begin working on a feature, I will move it to the "in progess" section on the board. When I begin testing on that feature, I will move it to the "review/testing" section, and when the feature is complete I will move the card to the "done" section.
 
