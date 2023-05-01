@@ -19,17 +19,17 @@ while user_selection != "7":
     user_selection = menu_bar()
 
     if (user_selection == "1"):
-        print("Add chore")
+        add_chore()
     elif (user_selection == "2"):
-        print("Remove chore")
+        remove_chore()
     elif (user_selection == "3"):
-        print("Mark chore")
+        mark_chore()
     elif (user_selection == "4"):
-        print("View Chores")
+       view_chores()
     elif (user_selection == "5"):
-        print("View Day")
+       view_day()
     elif (user_selection == "6"):
-        print("View Uncompleted Chores")
+        view_uncompleted()
     elif (user_selection == "7"):
         break
     else:
