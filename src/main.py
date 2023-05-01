@@ -10,7 +10,7 @@ try:
     print("In try block")
 except FileNotFoundError as e:
     todo_file = open(file_name, "w")
-    todo_file.write("title, completed")
+    todo_file.write("title, day to complete, instructions, approx. time, completed\n")
     todo_file.close()
     print("In except block")
 
@@ -31,7 +31,7 @@ while user_selection != "7":
     user_selection = menu_bar()
 
     if (user_selection == "1"):
-        add_chore()
+        add_chore(file_name)
     elif (user_selection == "2"):
         remove_chore()
     elif (user_selection == "3"):
