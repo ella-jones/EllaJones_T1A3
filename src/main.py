@@ -33,10 +33,11 @@ while user_selection != "7":
     if (user_selection == "1"):
         add_chore(file_name)
     elif (user_selection == "2"):
-        remove_chore()
+        remove_chore(file_name)
     elif (user_selection == "3"):
         mark_chore()
     elif (user_selection == "4"):
+       print("View Chores")
        view_chores(file_name)
     elif (user_selection == "5"):
        view_day()

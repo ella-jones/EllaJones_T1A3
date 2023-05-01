@@ -10,22 +10,34 @@ def add_chore(file_name):
         writer = csv.writer(chore_file)
         writer.writerow([chore_title, chore_day, chore_instructions,chore_time , "Uncompleted"])
 
-def remove_chore():
+def remove_chore(file_name):
     print("Remove chore")
+    view_chores(file_name)
+    chore_title = input("Enter the chore title that you want to remove (write it exactly as it is shown): ")
+    chore_lists = []
+    with open(file_name, "r") as chore_file:
+        reader = csv.reader(chore_file)
+        for row in reader:
+            if (chore_title != row[0]):
+                chore_lists.append(row)
+    with open(file_name, "w") as chore_file:
+        writer = csv.writer(chore_file)
+        writer.writerows(chore_lists)
+    print("EDITED LIST:")
+    view_chores(file_name)
 
 def mark_chore():
     print("Mark chore")
 
 def view_chores(file_name):
-    print("View Chores")
     with open(file_name, "r") as chore_file:
         reader = csv.reader(chore_file)
         reader.__next__()
         for row in reader:
             if(row[4] == "Completed"):
-                print(f"Chore: {row[0]} was COMPLETED on {row[1]}.")
+                print(f"Chore: '{row[0]}' was COMPLETED on {row[1]}.")
             else:
-                print(f"Chore: {row[0]} is UNCOMPLETED. Day to complete: {row[1]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
+                print(f"Chore: '{row[0]}' is UNCOMPLETED. Day to complete: {row[1]}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
 
 def view_day():
     print("View chores for a specific day")
