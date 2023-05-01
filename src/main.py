@@ -1,10 +1,11 @@
 from rich.console import Console
+
 from colored import fg, bg, attr
 
 from chore_functions import add_chore, remove_chore, mark_chore, view_chores, view_day, view_uncompleted
 
 console = Console()
-console.print("Welcome to your Chores list!", style="bold")
+print(f"{fg('blue')}Welcome to your Chores list! {attr('reset')}")
 
 file_name = "chore_list.csv"
 
