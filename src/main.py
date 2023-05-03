@@ -10,12 +10,15 @@ print(f"{fg('blue')}Welcome to your Chores list! {attr('reset')}")
 file_name = "chore_list.csv"
 
 try:
-    todo_file = open(file_name, "r")
-    todo_file.close()
+    chore_file = open(file_name, "r")
 except FileNotFoundError as e:
-    todo_file = open(file_name, "w")
-    todo_file.write("title, day to complete, instructions/notes, approx. time, completed/uncompleted\n")
-    todo_file.close()
+    chore_file = open(file_name, "w")
+    chore_file.write("title, day to complete, instructions/notes, approx. time, completed/uncompleted\n")
+    chore_file.close()
+except Exception as e:
+    print(e)
+else:
+    chore_file.close()
 
 def menu_bar():
     console.print("1. Enter [bold deep_pink1]1[/] to [bold deep_pink1]add a chore[/] to your list")
@@ -54,4 +57,4 @@ while user_selection != "7":
     input(f"Press {attr('bold')}{fg('wheat_1')}Enter{attr('reset')} to contunue...")
 
 
-print("Thank you for using Chore List!")
+print(f"{attr('bold')}{bg('purple_1b')}Thank you for using Chore List!{attr('reset')}")
