@@ -7,7 +7,7 @@ import csv
 class WeekDayError(Exception):
     pass
 def check_day(i):
-    if i != "monday" or "tuesday" or "wednesday" or "thursday" or "friday" or "saturday" or "sunday":
+    if (i != "monday" or i != "tuesday" or i != "wednesday" or i != "thursday" or i != "friday" or i != "saturday" or i != "sunday"):
         raise WeekDayError ('That is not a week day, silly!')
 
 console = Console()
