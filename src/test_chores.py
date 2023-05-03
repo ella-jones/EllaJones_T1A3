@@ -23,8 +23,7 @@ def test_remove(monkeypatch):
     with open(test_file_name) as f:
         reader = csv.reader(f)
         original_length = sum(1 for row in reader)
-    inputs = iter(['test', 'test2', 'test3'])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    monkeypatch.setattr('builtins.input', lambda _: "test chore")
     remove_chore(test_file_name)
     with open(test_file_name) as f:
         reader = csv.reader(f)
@@ -32,4 +31,6 @@ def test_remove(monkeypatch):
     print(original_length)
     print(new_length)
     assert new_length == original_length - 1
+
+    
 
