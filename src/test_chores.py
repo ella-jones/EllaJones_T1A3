@@ -2,6 +2,10 @@ import pytest
 import csv
 from chore_functions import add_chore, remove_chore, view_chores
 
+# Test 1
+# This test checks if the add_chore() function (located in chore_functions.py) correctly adds a 
+# new line to the corresponding csv file (chore_list.csv). This test uses the test_chores.csv file
+# (located in the tests folder) to test this function.
 def test_add(monkeypatch):
     test_file_name = "tests/test_chores.csv"
     original_length = 0
@@ -17,6 +21,10 @@ def test_add(monkeypatch):
     print(new_length)
     assert new_length == original_length + 1
 
+# Test 2
+# This test checks if the remove_chore() function (located in chore_functions.py) correctly removes an 
+# line from the corresponding csv file (chore_list.csv). This test uses the test_remove.csv file
+# (located in the tests folder) to test this function.
 def test_remove(monkeypatch):
     test_file_name = "tests/test_remove.csv"
     original_length = 0
