@@ -26,7 +26,7 @@ def add_chore(file_name):
         try:
             with open(file_name, "a") as chore_file:
                 writer = csv.writer(chore_file)
-                writer.writerow([chore_title, chore_day, chore_instructions,chore_time , "Uncompleted"])
+                writer.writerow([chore_title, chore_day, chore_instructions, chore_time, "Uncompleted"])
         except FileNotFoundError as e:
             print("oops, there was an error writing in this file!")
         except Exception as e:
