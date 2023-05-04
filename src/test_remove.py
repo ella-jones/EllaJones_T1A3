@@ -1,16 +1,20 @@
 import pytest
 import csv
 from chore_functions import remove_chore, view_chores
+from pytest import fixture
 
 test_file_name = "tests/test_remove.csv"
 
-def pytest_sessionstart(session):
+@fixture(autouse=True, scope='session')
+def my_fixture():
+    # setup_stuff
     print("--------------------setup-------------------------")
     with open(test_file_name, "w") as f:
-                writer = csv.writer(f)
-                writer.writerow(["test chore", "monday", "test", "test", "Uncompleted"])
+        writer = csv.writer(f)
+        writer.writerow(["test chore", "monday", "test", "test", "Uncompleted"])
 
-def pytest_sessionfinish(session, exitstatus):
+    yield
+    # teardown_stuff
     print("--------------------teardown-------------------------")
 
 # Test 2:
