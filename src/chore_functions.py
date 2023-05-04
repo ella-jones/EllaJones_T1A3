@@ -6,8 +6,8 @@ import csv
 
 class WeekDayError(Exception):
     pass
-def check_day(i):
-    if (i != "monday" or i != "tuesday" or i != "wednesday" or i != "thursday" or i != "friday" or i != "saturday" or i != "sunday"):
+def check_day(a):
+    if not (a == "monday" or a == "tuesday" or a == "wednesday" or a == "thursday" or a == "friday" or a == "saturday" or a == "sunday"):
         raise WeekDayError ('That is not a week day, silly!')
 
 console = Console()
@@ -23,14 +23,14 @@ def add_chore(file_name):
     else:
         chore_instructions = input(f"Enter {attr('bold')}{fg('dark_slate_gray_1')}instructions{attr('reset')} for this chore, e.g. put clothes in the washing machine: ").lower()
         chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}approx. time{attr('reset')} it will take to complete this chore: ").lower()
-    try:
-        with open(file_name, "a") as chore_file:
-            writer = csv.writer(chore_file)
-            writer.writerow([chore_title, chore_day, chore_instructions,chore_time , "Uncompleted"])
-    except FileNotFoundError as e:
-        print("oops, there was an error writing in this file!")
-    except Exception as e:
-        print(e)
+        try:
+            with open(file_name, "a") as chore_file:
+                writer = csv.writer(chore_file)
+                writer.writerow([chore_title, chore_day, chore_instructions,chore_time , "Uncompleted"])
+        except FileNotFoundError as e:
+            print("oops, there was an error writing in this file!")
+        except Exception as e:
+            print(e)
 
 def remove_chore(file_name):
     console.print("Remove Chore", style="bold underline dark_orange")
@@ -66,22 +66,22 @@ def mark_chore(file_name):
     else:
         chore_instructions = input(f"Enter any {attr('bold')}{fg('dark_slate_gray_1')}notes{attr('reset')} for this chore (if you would like to leave as blank, enter 'none'): ").lower()
         chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}time{attr('reset')} it took you to complete this chore: ").lower()
-    chore_lists = []
-    try:
-        with open(file_name, "r") as chore_file:
-            reader = csv.reader(chore_file)
-            for row in reader:
-                if (chore_title == row[0]):
-                    chore_lists.append([chore_title, chore_day, chore_instructions,chore_time , "Completed"])
-                else:
-                    chore_lists.append(row)
-        with open(file_name, "w") as chore_file:
-            writer = csv.writer(chore_file)
-            writer.writerows(chore_lists)
-    except FileNotFoundError as e:
-        print("Oops, there was an error in marking your chore in your chores list file!")
-    except Exception as e:
-        print(e)
+        chore_lists = []
+        try:
+            with open(file_name, "r") as chore_file:
+                reader = csv.reader(chore_file)
+                for row in reader:
+                    if (chore_title == row[0]):
+                        chore_lists.append([chore_title, chore_day, chore_instructions,chore_time , "Completed"])
+                    else:
+                        chore_lists.append(row)
+            with open(file_name, "w") as chore_file:
+                writer = csv.writer(chore_file)
+                writer.writerows(chore_lists)
+        except FileNotFoundError as e:
+            print("Oops, there was an error in marking your chore in your chores list file!")
+        except Exception as e:
+            print(e)
 
 def view_chores(file_name):
     try:
@@ -131,8 +131,8 @@ def view_day(file_name):
                         print(f"Chore: {attr('bold')}{fg('purple_3')}'{row[0]}'{attr('reset')}. {attr('bold')}{fg('sandy_brown')}{row[4]}{attr('reset')}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
         except FileNotFoundError as e:
             print("Oops, there was an error in reading your chores list file!")
-        except Exception as e:
-            print(e)
+        # except Exception as e:
+        #     print(e)
     
 def view_uncompleted(file_name):
     console.print("UNCOMPLETED CHORES:", style="bold underline slate_blue1")
