@@ -28,8 +28,12 @@ def menu_bar():
     console.print("5. Enter [bold bright_cyan]5[/] to [bold bright_cyan]view[/] your chores for a [bold]specific day[/].")
     console.print("6. Enter [bold slate_blue1]6[/] to [bold slate_blue1]view[/] your [bold]uncompleted chores[/]")
     console.print("7. Enter [bold dark_magenta]7[/] to [bold dark_magenta]exit[/]")
-    selection = input("Enter your selection: ").strip()
-    return selection
+    try:
+        selection = input("Enter your selection: ").strip()
+    except Exception as e:
+        print(e)
+    else:
+        return selection
 
 user_selection = str()
 

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-python3 -m venv chores-venv
-source chores-venv/bin/activate
-pip3 install -r requirements.txt
+# This bash script clears the setup information from the terminal and runs the application for the user.
+
 clear
 python3 main.py

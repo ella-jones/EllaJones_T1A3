@@ -14,15 +14,24 @@ console = Console()
 
 def add_chore(file_name):
     console.print("Add Chore", style="bold underline deep_pink1")
-    chore_title = input(f"Enter your {attr('bold')}{fg('dark_slate_gray_1')}chore title{attr('reset')} (use simple titles): ").lower().strip()
+    try:
+        chore_title = input(f"Enter your {attr('bold')}{fg('dark_slate_gray_1')}chore title{attr('reset')} (use simple titles): ").lower().strip()
+    except Exception as e:
+        print(e)
     try:
         chore_day = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}day{attr('reset')} this chore needs to be completed: ").lower().strip()
         check_day(chore_day)
     except WeekDayError as e:
         print(e)
     else:
-        chore_instructions = input(f"Enter {attr('bold')}{fg('dark_slate_gray_1')}instructions{attr('reset')} for this chore, e.g. put clothes in the washing machine: ").lower()
-        chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}approx. time{attr('reset')} it will take to complete this chore: ").lower()
+        try:
+            chore_instructions = input(f"Enter {attr('bold')}{fg('dark_slate_gray_1')}instructions{attr('reset')} for this chore, e.g. put clothes in the washing machine: ").lower()
+        except Exception as e:
+            print(e)
+        try:
+            chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}approx. time{attr('reset')} it will take to complete this chore: ").lower()
+        except Exception as e:
+            print(e)
         try:
             with open(file_name, "a") as chore_file:
                 writer = csv.writer(chore_file)
@@ -36,7 +45,10 @@ def remove_chore(file_name):
     console.print("Remove Chore", style="bold underline dark_orange")
     console.print("CURRENT LIST OF CHORES:", style="bold yellow")
     view_chores(file_name)
-    chore_title = input(f"Enter the {attr('bold')}{fg('purple_3')}'chore title'{attr('reset')} that you want to remove: ").lower().strip()
+    try:
+        chore_title = input(f"Enter the {attr('bold')}{fg('purple_3')}'chore title'{attr('reset')} that you want to remove: ").lower().strip()
+    except Exception as e:
+        print(e)
     chore_lists = []
     try:
         with open(file_name, "r") as chore_file:
@@ -57,15 +69,24 @@ def remove_chore(file_name):
 def mark_chore(file_name):
     console.print("Mark Chore", style="bold underline yellow")
     view_chores(file_name)
-    chore_title = input(f"Enter the {attr('bold')}{fg('purple_3')}'chore title'{attr('reset')} that you want to mark as complete: ").lower().strip()
+    try:
+        chore_title = input(f"Enter the {attr('bold')}{fg('purple_3')}'chore title'{attr('reset')} that you want to mark as complete: ").lower().strip()
+    except Exception as e:
+        print(e)
     try:
         chore_day = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}day{attr('reset')} that you completed this chore: ").lower().strip()
         check_day(chore_day)
     except WeekDayError as e:
         print(e)
     else:
-        chore_instructions = input(f"Enter any {attr('bold')}{fg('dark_slate_gray_1')}notes{attr('reset')} for this chore (if you would like to leave as blank, enter 'none'): ").lower()
-        chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}time{attr('reset')} it took you to complete this chore: ").lower()
+        try:
+            chore_instructions = input(f"Enter any {attr('bold')}{fg('dark_slate_gray_1')}notes{attr('reset')} for this chore (if you would like to leave as blank, enter 'none'): ").lower()
+        except Exception as e:
+            print(e)
+        try:
+            chore_time = input(f"Enter the {attr('bold')}{fg('dark_slate_gray_1')}time{attr('reset')} it took you to complete this chore: ").lower()
+        except Exception as e:
+            print(e)
         chore_lists = []
         try:
             with open(file_name, "r") as chore_file:
