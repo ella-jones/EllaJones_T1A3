@@ -4,6 +4,8 @@ from colored import fg, bg, attr
 
 import csv
 
+# The below custom exception is used on inputs that require a weekday to be 
+# entered. If a weekday is not entered, an error will be thrown.
 class WeekDayError(Exception):
     pass
 def check_day(a):
@@ -12,6 +14,9 @@ def check_day(a):
 
 console = Console()
 
+# The below function allows the user to add a chore to their chore list (csv file) and to
+# input the chore title, day to be completed, instructions, and approx. time to complete. 
+# All chores are entered as "uncompleted" and are in their own line.
 def add_chore(file_name):
     console.print("Add Chore", style="bold underline deep_pink1")
     try:
@@ -41,6 +46,8 @@ def add_chore(file_name):
         except Exception as e:
             print(e)
 
+# The below function allows the user to select a chore they would like to remove from 
+# their chores list (csv file) and deletes the corresponding line from the list.
 def remove_chore(file_name):
     console.print("Remove Chore", style="bold underline dark_orange")
     console.print("CURRENT LIST OF CHORES:", style="bold yellow")
@@ -66,6 +73,8 @@ def remove_chore(file_name):
     console.print("EDITED LIST:", style="bold yellow")
     view_chores(file_name)
 
+# This function allows the user to mark a chore as "Completed" and input updated information about
+# the chore (e.g. how long it actually took and any notes they have.)
 def mark_chore(file_name):
     console.print("Mark Chore", style="bold underline yellow")
     view_chores(file_name)
@@ -104,6 +113,7 @@ def mark_chore(file_name):
         except Exception as e:
             print(e)
 
+# This function allows the user to view their chores list (csv file) in read mode.
 def view_chores(file_name):
     try:
         with open(file_name, "r") as chore_file:
@@ -119,6 +129,8 @@ def view_chores(file_name):
     except Exception as e:
         print(e)
 
+# This function allows the user to input a weekday and view all chores they need to complete 
+# on that day. If they don't enter a weekday, it will throw the WeekDayError (custom error).
 def view_day(file_name):
     console.print("View chores for a specific day", style="bold underline bright_cyan")
     try:
@@ -152,9 +164,10 @@ def view_day(file_name):
                         print(f"Chore: {attr('bold')}{fg('purple_3')}'{row[0]}'{attr('reset')}. {attr('bold')}{fg('sandy_brown')}{row[4]}{attr('reset')}. Approx. time to complete: {row[3]}. Instructions: {row[2]}.")
         except FileNotFoundError as e:
             print("Oops, there was an error in reading your chores list file!")
-        # except Exception as e:
-        #     print(e)
+        except Exception as e:
+            print(e)
     
+# This function allows the user to view all of the chores marked as "Uncompleted."
 def view_uncompleted(file_name):
     console.print("UNCOMPLETED CHORES:", style="bold underline slate_blue1")
     try:

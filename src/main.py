@@ -9,6 +9,8 @@ print(f"{fg('blue')}Welcome to your Chores list! {attr('reset')}")
 
 file_name = "chore_list.csv"
 
+# The below code checks if the chore_list.csv file already exists, if it doesn't exist it it creates
+# the file for the user and adds the first line (example line)
 try:
     chore_file = open(file_name, "r")
 except FileNotFoundError as e:
@@ -20,6 +22,7 @@ except Exception as e:
 else:
     chore_file.close()
 
+# The following function displays the menu bar to the user and allows them to input their selection.
 def menu_bar():
     console.print("1. Enter [bold deep_pink1]1[/] to [bold deep_pink1]add a chore[/] to your list")
     console.print("2. Enter [bold dark_orange]2[/] to [bold dark_orange]remove a chore[/] from your list")
@@ -37,6 +40,7 @@ def menu_bar():
 
 user_selection = str()
 
+# The below while loop runs the function for the user's selection. (These functions are located in chore_functions.py)
 while user_selection != "7":
     user_selection = menu_bar()
 
