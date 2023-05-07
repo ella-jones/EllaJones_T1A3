@@ -5,7 +5,8 @@ from pytest import fixture
 
 test_file_name = "tests/test_remove.csv"
 
-# I have used pytest fixture to create a setup that adds a line to the csv file so that the remove_chore() test passes.
+# I have used pytest fixture to create a setup that adds a line to the csv file so that 
+# the remove_chore() test passes.
 @fixture(autouse=True, scope='session')
 def my_fixture():
     # setup_stuff

@@ -3,13 +3,16 @@
 ## **Link to GitHub Repository**
 https://github.com/ella-jones/T1A3_TerminalApp.git
 
+## **Link to Presentation Video**
+https://vimeo.com/824506273/1e196a7469
+
 ## **Style Guide**
 I will be following the Pep8 Python Style Guide while coding my application. 
 
 ### Reference for Style Guide:
 Van Rossum, G., Warsaw, B., & Coghlan, N. 2001, *PEP 8 - Style guide for Python code*, PEPS Python, accessed 1 May 2023, https://peps.python.org/pep-0008/. 
 
-## **About**
+## **Concept**
 Chores List is an application that allows users to keep track of chores that they need to complete each week. It allows them to assign a specific day to each chore, add new chores, remove old chores, mark chores as complete and view the chores (by day, by uncompleted, or all chores).
 
 ## **Features**
@@ -50,8 +53,6 @@ This will allows the user to view all chores that have not been marked as comple
 
 ### **Exit**
 This will allow the user to exit from the application.
-
-<br>
 
 ## **Implementation Plan**
 
